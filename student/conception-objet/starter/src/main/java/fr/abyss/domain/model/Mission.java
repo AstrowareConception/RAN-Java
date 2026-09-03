@@ -1,93 +1,44 @@
 package fr.abyss.domain.model;
 
 /**
- * Entité représentant une mission sous-marine avec priorité.
+ * Entité de domaine représentant une mission sous-marine avec priorité.
+ *
+ * TODO 2 : Concevoir la classe Mission en protégeant ses invariants.
  */
 public class Mission {
 
-    private final int id;
-    private final String name;
-    private final int depth;
-    private final int energyCost;
-    private final Capability requiredCapability;
-    private final double payloadKg;
-    private final MissionPriority priority;
-    private MissionStatus status;
+    // TODO 2.1 : Déclarer les attributs privés :
+    // - id (int, immuable)
+    // - name (String, immuable)
+    // - depth (int, immuable)
+    // - energyCost (int, immuable)
+    // - requiredCapability (Capability, immuable)
+    // - payloadKg (double, immuable)
+    // - priority (MissionPriority, immuable)
+    // - status (MissionStatus, initialisé à PENDING)
 
-    public Mission(int id, String name, int depth, int energyCost, Capability requiredCapability, double payloadKg, MissionPriority priority) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Le nom de la mission ne peut pas être vide.");
-        }
-        if (depth <= 0) {
-            throw new IllegalArgumentException("La profondeur doit être positive.");
-        }
-        if (energyCost < 0 || energyCost > 100) {
-            throw new IllegalArgumentException("Le coût énergétique doit être entre 0 et 100%.");
-        }
-        if (requiredCapability == null) {
-            throw new IllegalArgumentException("La capacité requise ne peut pas être null.");
-        }
-        if (payloadKg < 0) {
-            throw new IllegalArgumentException("La charge utile doit être positive ou nulle.");
-        }
+    // TODO 2.2 : Écrire les constructeurs en validant les invariants :
+    // - Constructeur complet (id, name, depth, energyCost, requiredCapability, payloadKg, priority)
+    //   * name non null et non vide
+    //   * depth > 0
+    //   * energyCost compris entre 0 et 100
+    //   * requiredCapability non null
+    //   * payloadKg >= 0
+    //   * priority par défaut à MissionPriority.NORMAL si null
+    //   * status initialisé à MissionStatus.PENDING
+    // - Constructeur de commodité sans priority (assigne NORMAL par défaut)
 
-        this.id = id;
-        this.name = name;
-        this.depth = depth;
-        this.energyCost = energyCost;
-        this.requiredCapability = requiredCapability;
-        this.payloadKg = payloadKg;
-        this.priority = (priority != null) ? priority : MissionPriority.NORMAL;
-        this.status = MissionStatus.PENDING;
-    }
+    // TODO 2.3 : Écrire les accesseurs pour tous les champs :
+    // - getId()
+    // - getName()
+    // - getDepth()
+    // - getEnergyCost()
+    // - getRequiredCapability()
+    // - getPayloadKg()
+    // - getPriority()
+    // - getStatus()
+    // Et le setter : setStatus(MissionStatus status)
+    // Ainsi que la méthode d'aide isPending() : retourne true si status == MissionStatus.PENDING
 
-    public Mission(int id, String name, int depth, int energyCost, Capability requiredCapability, double payloadKg) {
-        this(id, name, depth, energyCost, requiredCapability, payloadKg, MissionPriority.NORMAL);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getDepth() {
-        return depth;
-    }
-
-    public int getEnergyCost() {
-        return energyCost;
-    }
-
-    public Capability getRequiredCapability() {
-        return requiredCapability;
-    }
-
-    public double getPayloadKg() {
-        return payloadKg;
-    }
-
-    public MissionPriority getPriority() {
-        return priority;
-    }
-
-    public MissionStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(MissionStatus status) {
-        this.status = status;
-    }
-
-    public boolean isPending() {
-        return this.status == MissionStatus.PENDING;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("[%d] %-30s | Prof: %4dm | Coût: %2d%% | Cap: %-11s | Charge: %4.1fkg | Prio: %-8s | Statut: %s",
-                id, name, depth, energyCost, requiredCapability, payloadKg, priority, status);
-    }
+    // TODO 2.4 : Optionnel : redéfinir toString() pour l'affichage console.
 }

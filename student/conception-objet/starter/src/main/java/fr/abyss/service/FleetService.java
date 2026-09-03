@@ -29,24 +29,23 @@ public class FleetService {
         initializeDefaultFleet();
     }
 
+    /**
+     * TODO 3 : Initialiser la flotte de drones et les missions de référence.
+     * Consultez docs/REGLES_METIER.md pour les données initiales.
+     */
     public void initializeDefaultFleet() {
         drones.clear();
         missions.clear();
 
-        // Flotte
-        drones.add(new Drone(1, "Nautilus", 80, 500, Set.of(Capability.OBSERVATION), 5.0));
-        drones.add(new Drone(2, "Argos", 65, 1200, Set.of(Capability.OBSERVATION, Capability.RECOVERY), 25.0));
-        drones.add(new Drone(3, "Hephaistos", 90, 800, Set.of(Capability.REPAIR), 10.0));
-        drones.add(new Drone(4, "Titan", 45, 2000, Set.of(Capability.RECOVERY), 50.0));
-        drones.add(new Drone(5, "Proteus", 100, 1000, Set.of(Capability.OBSERVATION, Capability.REPAIR), 8.0));
+        // TODO 3.1 : Créer et ajouter les 5 drones de référence dans la liste `drones`.
+        // (Nautilus, Argos, Hephaistos, Titan, Proteus)
+        // Exemple :
+        // drones.add(new Drone(1, "Nautilus", 80, 500, Set.of(Capability.OBSERVATION), 5.0));
 
-        // Missions
-        missions.add(new Mission(1, "Photographier l'épave Aurora", 350, 20, Capability.OBSERVATION, 0.0, MissionPriority.NORMAL));
-        missions.add(new Mission(2, "Récupérer la balise B12", 700, 30, Capability.RECOVERY, 18.0, MissionPriority.HIGH));
-        missions.add(new Mission(3, "Réparer le capteur Omega", 600, 35, Capability.REPAIR, 0.0, MissionPriority.CRITICAL));
-        missions.add(new Mission(4, "Explorer la fosse Hécate", 1500, 35, Capability.OBSERVATION, 0.0, MissionPriority.NORMAL));
-        missions.add(new Mission(5, "Remonter une boîte noire", 900, 25, Capability.RECOVERY, 40.0, MissionPriority.HIGH));
-        missions.add(new Mission(6, "Inspecter le pipeline Nord", 750, 20, Capability.OBSERVATION, 0.0, MissionPriority.LOW));
+        // TODO 3.2 : Créer et ajouter les 6 missions de référence dans la liste `missions`.
+        // (Aurora, Balise B12, Capteur Omega, Fosse Hécate, Boîte noire, Pipeline Nord)
+        // Exemple :
+        // missions.add(new Mission(1, "Photographier l'épave Aurora", 350, 20, Capability.OBSERVATION, 0.0, MissionPriority.NORMAL));
     }
 
     public List<Drone> getDrones() {

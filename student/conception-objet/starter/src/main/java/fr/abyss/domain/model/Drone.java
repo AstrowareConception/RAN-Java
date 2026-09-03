@@ -6,113 +6,45 @@ import java.util.Set;
 
 /**
  * Entité de domaine représentant un drone sous-marin autonome.
+ *
+ * TODO 1 : Concevoir la classe Drone en protégeant ses invariants.
  */
 public class Drone {
 
-    private final int id;
-    private final String name;
-    private int battery;
-    private final int maxDepth;
-    private DroneStatus status;
-    private final Set<Capability> capabilities = new HashSet<>();
-    private final double maxPayloadKg;
+    // TODO 1.1 : Déclarer les attributs privés et protégés :
+    // - id (int, immuable)
+    // - name (String, immuable)
+    // - battery (int, mutable, entre 0 et 100)
+    // - maxDepth (int, immuable)
+    // - status (DroneStatus, initialisé à AVAILABLE)
+    // - capabilities (Set<Capability>, encapsulé)
+    // - maxPayloadKg (double, immuable)
 
-    // TODO 1 : Consolider les invariants de construction
-    public Drone(int id, String name, int battery, int maxDepth, Set<Capability> capabilities, double maxPayloadKg) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Le nom du drone ne peut pas être vide.");
-        }
-        if (battery < 0 || battery > 100) {
-            throw new IllegalArgumentException("La batterie doit être comprise entre 0 et 100%.");
-        }
-        if (maxDepth <= 0) {
-            throw new IllegalArgumentException("La profondeur maximale doit être positive.");
-        }
-        if (maxPayloadKg < 0) {
-            throw new IllegalArgumentException("La charge maximale doit être positive.");
-        }
+    // TODO 1.2 : Écrire le constructeur principal en validant les invariants :
+    // - Le nom ne doit pas être null ni vide (lever IllegalArgumentException)
+    // - La batterie doit être comprise entre 0 et 100 %
+    // - La profondeur maximale doit être strictement positive
+    // - La charge utile maximale doit être positive ou nulle
+    // - Le statut initial doit être DroneStatus.AVAILABLE
 
-        this.id = id;
-        this.name = name;
-        this.battery = battery;
-        this.maxDepth = maxDepth;
-        if (capabilities != null) {
-            this.capabilities.addAll(capabilities);
-        }
-        this.maxPayloadKg = maxPayloadKg;
-        this.status = DroneStatus.AVAILABLE;
-    }
+    // TODO 1.3 : Écrire les getters pour tous les champs :
+    // - getId()
+    // - getName()
+    // - getBattery()
+    // - getMaxDepth()
+    // - getStatus()
+    // - getCapabilities() (penser à retourner une vue non modifiable avec Collections.unmodifiableSet)
+    // - getMaxPayloadKg()
+    // Et le setter de statut : setStatus(DroneStatus status)
 
-    public int getId() {
-        return id;
-    }
+    // TODO 1.4 : Implémenter les méthodes métier du domaine :
+    // - isAvailable() : retourne true si le statut est DroneStatus.AVAILABLE
+    // - canDiveTo(int targetDepth) : vérifie si targetDepth <= maxDepth
+    // - hasEnoughBatteryFor(int energyCost) : vérifie battery >= energyCost + 15 (réserve de 15 %)
+    // - hasCapability(Capability capability) : vérifie si le drone possède la capacité
+    // - canCarry(double payload) : vérifie si payload <= maxPayloadKg
+    // - executeMission(int energyCost) : décrémente la batterie, bascule en MAINTENANCE si batterie < 15 %, sinon AVAILABLE
+    // - recharge(int amount) : augmente la batterie (plafonnée à 100), remet le drone à AVAILABLE si batterie >= 15 %
 
-    public String getName() {
-        return name;
-    }
-
-    public int getBattery() {
-        return battery;
-    }
-
-    public int getMaxDepth() {
-        return maxDepth;
-    }
-
-    public DroneStatus getStatus() {
-        return status;
-    }
-
-    public Set<Capability> getCapabilities() {
-        return Collections.unmodifiableSet(capabilities);
-    }
-
-    public double getMaxPayloadKg() {
-        return maxPayloadKg;
-    }
-
-    public void setStatus(DroneStatus status) {
-        this.status = status;
-    }
-
-    // --- TODO 4 : Implémenter les méthodes métier du drone ---
-
-    public boolean isAvailable() {
-        // TODO 4 : exprimer la condition de disponibilité à partir du statut.
-        return false;
-    }
-
-    public boolean canDiveTo(int targetDepth) {
-        // TODO 4 : comparer la profondeur demandée à maxDepth.
-        return false;
-    }
-
-    public boolean hasEnoughBatteryFor(int energyCost) {
-        // TODO 4 : ne pas oublier la réserve obligatoire de 15 %.
-        return false;
-    }
-
-    public boolean hasCapability(Capability capability) {
-        // TODO 4 : interroger les capacités du drone.
-        return false;
-    }
-
-    public boolean canCarry(double payload) {
-        // TODO 4 : comparer la charge demandée à la charge maximale.
-        return false;
-    }
-
-    public void executeMission(int energyCost) {
-        // TODO 4 : diminuer la batterie sans sortir de [0, 100], puis mettre à jour le statut.
-    }
-
-    public void recharge(int amount) {
-        // TODO 4 : refuser une quantité négative, plafonner à 100 et rétablir la disponibilité si pertinent.
-    }
-
-    @Override
-    public String toString() {
-        return String.format("[%d] %-12s | Bat: %3d%% | Prof. max: %4dm | Charge max: %4.1fkg | Statut: %-11s | Caps: %s",
-                id, name, battery, maxDepth, maxPayloadKg, status, capabilities);
-    }
+    // TODO 1.5 : Optionnel : redéfinir toString() pour l'affichage console.
 }
