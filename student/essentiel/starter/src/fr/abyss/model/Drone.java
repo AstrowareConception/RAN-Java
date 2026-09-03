@@ -18,67 +18,22 @@ public class Drone {
     // - Set<Capability> capabilities
     // - double maxPayloadKg (charge utile maximale)
 
-    private int id;
-    private String name;
-    private int battery;
-    private int maxDepth;
-    private DroneStatus status;
-    private Set<Capability> capabilities = new HashSet<>();
-    private double maxPayloadKg;
+    // TODO 1.2 : Écrire le constructeur pour initialiser l'ensemble des champs
+    // (id, name, battery, maxDepth, capabilities, maxPayloadKg)
+    // et positionner le statut initial à DroneStatus.AVAILABLE.
+    // Penser à borner ou vérifier la batterie entre 0 et 100 %.
 
-    // TODO 1.2 : Compléter le constructeur pour initialiser l'ensemble des champs
-    public Drone(int id, String name, int battery, int maxDepth, Set<Capability> capabilities, double maxPayloadKg) {
-        this.id = id;
-        this.name = name;
-        this.battery = battery;
-        this.maxDepth = maxDepth;
-        if (capabilities != null) {
-            this.capabilities.addAll(capabilities);
-        }
-        this.maxPayloadKg = maxPayloadKg;
-        this.status = DroneStatus.AVAILABLE;
-    }
+    // TODO 1.3 : Écrire les getters pour tous les champs :
+    // - getId()
+    // - getName()
+    // - getBattery()
+    // - getMaxDepth()
+    // - getStatus()
+    // - getCapabilities()
+    // - getMaxPayloadKg()
+    // Ainsi que les setters :
+    // - setStatus(DroneStatus status)
+    // - setBattery(int battery)
 
-    // TODO 1.3 : Vérifier et compléter les getters
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getBattery() {
-        return battery;
-    }
-
-    public int getMaxDepth() {
-        return maxDepth;
-    }
-
-    public DroneStatus getStatus() {
-        return status;
-    }
-
-    public Set<Capability> getCapabilities() {
-        return Collections.unmodifiableSet(capabilities);
-    }
-
-    public double getMaxPayloadKg() {
-        return maxPayloadKg;
-    }
-
-    public void setStatus(DroneStatus status) {
-        this.status = status;
-    }
-
-    public void setBattery(int battery) {
-        this.battery = Math.max(0, Math.min(100, battery));
-    }
-
-    @Override
-    public String toString() {
-        return String.format("[%d] %-12s | Bat: %3d%% | Prof. max: %4dm | Charge max: %4.1fkg | Statut: %-11s | Caps: %s",
-                id, name, battery, maxDepth, maxPayloadKg, status, capabilities);
-    }
+    // TODO 1.4 : Optionnel : redéfinir toString() pour afficher les informations du drone.
 }

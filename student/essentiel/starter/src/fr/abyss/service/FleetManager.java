@@ -24,25 +24,19 @@ public class FleetManager {
 
     /**
      * TODO 3 : Initialiser les 5 drones et les 6 missions de référence.
+     * Consultez docs/REGLES_METIER.md pour retrouver les valeurs du tableau de référence.
      */
     public void initializeData() {
         drones.clear();
         missions.clear();
 
-        // 1. Drones
-        drones.add(new Drone(1, "Nautilus", 80, 500, Set.of(Capability.OBSERVATION), 5.0));
-        drones.add(new Drone(2, "Argos", 65, 1200, Set.of(Capability.OBSERVATION, Capability.RECOVERY), 25.0));
-        drones.add(new Drone(3, "Hephaistos", 90, 800, Set.of(Capability.REPAIR), 10.0));
-        drones.add(new Drone(4, "Titan", 45, 2000, Set.of(Capability.RECOVERY), 50.0));
-        drones.add(new Drone(5, "Proteus", 100, 1000, Set.of(Capability.OBSERVATION, Capability.REPAIR), 8.0));
+        // TODO 3.1 : Créer et ajouter les 5 drones de la flotte dans la liste `drones`.
+        // Exemple pour le 1er drone :
+        // drones.add(new Drone(1, "Nautilus", 80, 500, Set.of(Capability.OBSERVATION), 5.0));
 
-        // 2. Missions
-        missions.add(new Mission(1, "Photographier l'épave Aurora", 350, 20, Capability.OBSERVATION, 0.0));
-        missions.add(new Mission(2, "Récupérer la balise B12", 700, 30, Capability.RECOVERY, 18.0));
-        missions.add(new Mission(3, "Réparer le capteur Omega", 600, 35, Capability.REPAIR, 0.0));
-        missions.add(new Mission(4, "Explorer la fosse Hécate", 1500, 35, Capability.OBSERVATION, 0.0));
-        missions.add(new Mission(5, "Remonter une boîte noire", 900, 25, Capability.RECOVERY, 40.0));
-        missions.add(new Mission(6, "Inspecter le pipeline Nord", 750, 20, Capability.OBSERVATION, 0.0));
+        // TODO 3.2 : Créer et ajouter les 6 missions dans la liste `missions`.
+        // Exemple pour la 1ère mission :
+        // missions.add(new Mission(1, "Photographier l'épave Aurora", 350, 20, Capability.OBSERVATION, 0.0));
     }
 
     public List<Drone> getDrones() {
@@ -54,23 +48,19 @@ public class FleetManager {
     }
 
     /**
-     * TODO 4 : Afficher l'ensemble des drones de la flotte.
+     * TODO 4.1 : Afficher l'ensemble des drones de la flotte.
      */
     public void displayDrones() {
         System.out.println("\n--- FLOTTE DE DRONES ---");
-        for (Drone drone : drones) {
-            System.out.println(drone);
-        }
+        // TODO 4.1 : Parcourir la liste `drones` avec une boucle for-each et afficher chaque drone.
     }
 
     /**
-     * TODO 4 : Afficher l'ensemble des missions.
+     * TODO 4.2 : Afficher l'ensemble des missions.
      */
     public void displayMissions() {
         System.out.println("\n--- LISTE DES MISSIONS ---");
-        for (Mission mission : missions) {
-            System.out.println(mission);
-        }
+        // TODO 4.2 : Parcourir la liste `missions` avec une boucle for-each et afficher chaque mission.
     }
 
     /**

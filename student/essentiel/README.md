@@ -37,9 +37,10 @@ Votre travail sera pleinement validé et considéré comme réussi dès lors que
 ## 3. Plan de Progression Étape par Étape
 
 ### Étape 0 — Prise en main du starter (10-15 min)
-* Ouvrez le projet situé dans le dossier `student/essentiel/starter/` dans votre IDE.
-* Exécutez la classe `fr.abyss.Main`. Le menu principal doit s'afficher en console.
-* Consultez le fichier `TODO.md` qui liste les tâches dans l'ordre.
+* Ouvrez le projet situé dans le dossier `student/essentiel/starter/` dans votre IDE (IntelliJ IDEA, Eclipse, VS Code...).
+* Observez l'arborescence sous `src/fr/abyss/` : les paquetages `model` (entités), `service` (logique métier) et la classe `Main`.
+* Consultez le fichier `TODO.md` qui liste les tâches ordonnées.
+* Les classes `Drone.java` et `Mission.java` sont fournies sous forme de squelettes guidés par des commentaires `// TODO` : vous allez les compléter lors des étapes 1 et 2 avant de lancer l'application.
 
 ### Étape 1 — Finaliser la classe `Drone` (30-40 min)
 * Ouvrez `fr.abyss.model.Drone`.
